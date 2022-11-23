@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Demonstrating the Use of Cookies</h1>
+        <input type="button" placeholder="CLICK ME TO SET COOKIES" value="CLICK ME TO SET COOKIES" id="cookieSettingButton">
+        <input type="button" placeholder="CLICK ME TO DELETE COOKIES" value="CLICK ME TO DELETE COOKIES" id="cookieRemovingButton">
+        <div>
+            <p>This is the cookie text: cookies will show up below:
+                <br>
+                <span id="cookieText"></span>
+            </p>
+        </div>
+        <footer>
+		<p>&copy; Doron Griffin-Tann 2022, Due 11/22/2022</p>
+	</footer>
+    </body>
+    <script>
+        function setCookies(){
+            let cookies = prompt("Please enter your cookies' text");
+            sessionStorage.setItem("cookieItem", cookies); 
+            let cookieElement = document.getElementById("cookieText");
+            cookieElement.innerText = sessionStorage.getItem("cookieItem");
+        }
+
+        function delCookies(){
+            sessionStorage.clear();
+            let cookieElement = document.getElementById("cookieText");
+            cookieElement.innerText = sessionStorage.getItem("cookieItem");
+        }
+        document.getElementById("cookieSettingButton").addEventListener("click", setCookies);
+        document.getElementById("cookieRemovingButton").addEventListener("click", delCookies);
+        let cookieElement = document.getElementById("cookieText");
+        cookieElement.innerText = sessionStorage.getItem("cookieItem");
+        if(cookieElement.innerText == ""){
+            cookieElement.innerText = "Cookiesare empty (likely not set OR set to empty space)";
+        }
+    </script>
+</html>
+
+
